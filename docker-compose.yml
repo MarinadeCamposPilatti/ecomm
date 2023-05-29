@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  ecomm:
+    build:
+      dockerfile: ./Dockerfile
+  
+  mongo-ecomm:
+    image: mongo
+    container_name: mongo-ecomm
+    env_file: .env
+    ports:
+      - "27017:27017"
+    volumes:
+      - db-mongo-ecomm:/data/db
+
+volumes:
+  db-mongo-ecomm:
+
