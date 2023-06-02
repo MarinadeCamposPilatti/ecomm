@@ -4,7 +4,7 @@ RUN mkdir /app-ecomm
 
 WORKDIR /app-ecomm
 
-COPY ./ /app-ecomm
+COPY . /app-ecomm
 
 RUN npm install
 
