@@ -1,4 +1,4 @@
-const data = require('./ecomm-produtos.json');
+const data = require('./dados/ecomm-produtos.json');
 
 use("ecomm");
 
