@@ -1,19 +1,44 @@
-version: '3.8'
+version: '3.9'
 
 services:
   ecomm:
+    container_name: ecomm
     build:
+      context: .
       dockerfile: ./Dockerfile
+    networks:
+      - rede-ecomm
+    ports:
+      - 3030:3030
+    depends_on:
+      mongo-ecomm:
+        condition: service_healthy
   
   mongo-ecomm:
     image: mongo
     container_name: mongo-ecomm
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
     env_file: .env
+    networks:
+      - rede-ecomm
     ports:
       - "27017:27017"
     volumes:
       - db-mongo-ecomm:/data/db
+      - type: bind
+        source: C:\Users\n134297\OneDrive - Santander Office 365\Documentos\ecomm\mongo
+        target: /mongo-scripts
+    restart: always
 
+networks:
+  rede-ecomm:
+    driver: bridge
+  
 volumes:
   db-mongo-ecomm:
 
