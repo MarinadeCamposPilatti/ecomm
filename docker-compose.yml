@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  ecomm:
+    container_name: ecomm
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: marina12/ecommcommongo:1.0
+    networks:
+      - rede-eco
+    ports:
+      - 3030:3030
+    depends_on:
+      mongo-ecomm:
+        condition: service_healthy
+
+  
+  mongo-ecomm:
+    image: mongo
+    container_name: mongo-ecomm
+    env_file: .env
+    healthcheck:
+      test: ["CMD","mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+    networks:
+      - rede-eco
+    ports:
+      - "27017:27017"
+    volumes:
+      - db-mongo-ecomm:/data/db
+      - type: bind
+        source: C:\ecomm\mongo
+        target: /mongo-scripts
+    restart: always
+
+
+networks:
+   rede-eco:
+volumes:
+  db-mongo-ecomm:
+
