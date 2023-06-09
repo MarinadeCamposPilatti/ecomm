@@ -1,0 +1,25 @@
+{
+    "$jsonSchema":{
+    "title": "Ecommerce Database",
+    "description": "Validation of the data from a ecommerce",
+    "bsonType": "object",
+    "required": ["_id","nome","status"],
+    "properties": {
+        "_id":{
+            "bsonType": "objectId",
+            "description": "informe corretamente o endereço do cliente"
+        },
+        "nome":{
+            "description": "name of the category",
+            "bsonType": "string",
+            "minLength":3
+        },
+        "status":{
+            "description": "category especification",
+            "bsonType": "string",
+            "enum": ["ATIVA","INATIVA"]
+        }
+    },
+    "additionalProperties": false
+}
+  }
