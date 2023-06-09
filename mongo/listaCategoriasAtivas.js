@@ -1,3 +1,3 @@
 use("ecomm");
-let categories = db.products.find({"status": "ATIVA"});
+let categories = db.categories.find({"status": "ATIVA"});
 console.log(categories);
