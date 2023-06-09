@@ -1,7 +1,5 @@
 FROM node:18
 
-RUN mkdir /app-ecomm
-
 WORKDIR /app-ecomm
 
 COPY . .
