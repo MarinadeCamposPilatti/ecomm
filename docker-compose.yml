@@ -33,8 +33,9 @@ services:
     volumes:
       - db-mongo-ecomm:/data/db
       - type: bind
-        source: C:\ecomm\mongo
+        source: C:\ecomm\mongo\scripts\
         target: /mongo-scripts
+      
     restart: always
 
 
