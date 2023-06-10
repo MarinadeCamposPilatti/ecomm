@@ -1,13 +1,13 @@
 {
     "$jsonSchema":{
-    "title": "Ecommerce Database",
-    "description": "Validation of the data from a ecommerce",
+    "title": "Validation of categories",
+    "description": "Validation of the data from the collection categories",
     "bsonType": "object",
     "required": ["_id","nome","status"],
     "properties": {
         "_id":{
             "bsonType": "objectId",
-            "description": "informe corretamente o endereço do cliente"
+            "description": "_id of the category"
         },
         "nome":{
             "description": "name of the category",
