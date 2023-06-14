@@ -1,0 +1,45 @@
+{
+    "$jsonSchema":{
+    "title": "Validation of products",
+    "description": "Validation of the data from the collection products",
+    "bsonType": "object",
+    "required": ["_id","NOME","DESCRIÇÃO","SLUG","QUANTIDADE EM ESTOQUE","CATEGORIA","PREÇO UNITÁRIO"],
+    "properties": {
+        "_id":{
+            "bsonType": "objectId",
+            "description": "id of the product"
+        },
+        "NOME":{
+            "description": "name of the product",
+            "bsonType": "string",
+            "minLength":5
+        },
+        "DESCRIÇÃO":{
+            "description": "product description",
+            "bsonType": "string",
+            "minLength":10
+        },
+        "SLUG":{
+            "description": "slug of the product",
+            "bsonType": "string",
+            "minLength":5
+        },
+        "QUANTIDADE EM ESTOQUE":{
+            "description": "stock quantity of the product",
+            "bsonType": "int",
+            "minimum":0
+        },
+        "CATEGORIA":{
+            "description": "category of the product",
+            "bsonType": "string",
+            "enum":["AUTOMOTIVA", "CELULARES", "INFORMÁTICA", "LIVROS","MÓVEIS"]
+        },
+        "PREÇO UNITÁRIO":{
+            "description": "price of the product",
+            "bsonType": ["int","double"],
+            "minimum":0
+        }
+    },
+    "additionalProperties": false
+}
+  }
