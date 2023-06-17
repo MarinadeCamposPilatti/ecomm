@@ -1,5 +1,5 @@
 
-  const categories = require('./categories.json');
+  const categories = require('../src/cli/db.json');
   const products= require('./products.json');
   const users= require('./users.json');
   const orders= require('./orders.json');
