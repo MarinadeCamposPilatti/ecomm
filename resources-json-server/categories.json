@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "nome": "INFORMÁTICA",
+      "status": "ATIVA"
+    },
+    {
+      "id": 2,
+      "nome": "BELEZA",
+      "status": "ATIVA"
+    },
+    {
+      "id": 3,
+      "nome": "CELULARES",
+      "status": "ATIVA"
+    }
+]

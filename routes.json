@@ -1,0 +1,20 @@
+{
+    "/api/categories": "/categories",
+    "/api/admin/categories": "/categories",
+    "/api/categories/:id": "/categories/:id",
+    "/api/admin/categories/:id" : "/categories/:id",
+    "/api/products" : "/products",
+    "/api/admin/products" : "/products",
+    "/api/products/:id": "/products/:id",
+    "/api/products/:CATEGORIA": "/products/:CATEGORIA",
+    "/api/admin/products/:id" : "/products/:id",
+    "/api/users" : "/users",
+    "/api/users/:id" : "/users/:id",
+    "/api/admin/users" : "/users",
+    "/api/admin/users/:id" : "/users/:id",
+    "/api/orders" : "/orders",
+    "/api/orders/:id" : "/orders/:id",
+    "/api/admin/orders" : "/orders",
+    "/api/admin/orders/:id" : "/orders/:id"
+
+  }
