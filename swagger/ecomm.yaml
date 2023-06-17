@@ -1,0 +1,563 @@
+openapi: 3.0.3
+info:
+  title: API de Produtos
+  description: API para controlar as categorias do DB.json
+  contact:
+    name: Contato de Teste
+    url: https://github.com/MarinadeCamposPilatti/ecomm
+    email: marina.campos@pagonxt.com
+  license:
+    name: MITLicense
+    url: http://mit-license.org/
+  version: 0.0.1
+servers:
+- url: http://localhost:3000
+  description: Source das Categorias
+
+tags:
+- name: categorias
+  description: métodos usados para manipular as categorias
+- name: produtos
+  description: métodos usados para manipular os produtos
+- name: usuários
+  description: métodos usados para manipular os usuários cadastrados
+- name: pedidos
+  description: métodos usados para manipular os pedidos
+  
+paths:
+  /api/categories: 
+    get:
+      tags:
+        - categorias
+      summary: Recupera todas as categorias
+      description: "Através desse endpoint retornam-se as categorias existentes"
+      responses:
+        200:
+          description: Consulta realizada
+          content:
+            aplication/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Categorias"
+        204:
+          description: Nenhuma categoria encontrada.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+        404:
+           $ref: "#/components/responses/Erro"
+  /api/admin/categories:
+    post:
+      tags:
+        - categorias
+      summary: Adiciona nova categoria
+      description: "Através desse endpoint criam-se novas categorias"
+      requestBody:
+        content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nome:
+                    type: string
+                  status:
+                    type: string
+                    enum: 
+                      - ATIVA
+      responses:
+        201:
+          description: Inserção realizada
+          $ref: "#/components/responses/Sucesso"
+        500:
+          description: Inserção não realizada
+          $ref: "#/components/responses/Erro_Tipo"
+          
+      
+  /api/categories/{id}:
+    parameters:
+      - $ref: "#/components/parameters/ID"
+    
+    get:
+      tags:
+        - categorias
+      summary: Recupera categoria por id
+      responses:
+        200:
+          description: Categoria retornada
+          $ref: "#/components/responses/Sucesso"
+        404:
+          $ref: "#/components/responses/Erro"
+  /api/admin/categories/{id}:
+    parameters:
+      - $ref: "#/components/parameters/ID"
+    put:
+      tags:
+        - categorias
+      summary: Atulizada categoria por id
+      requestBody:
+        content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  status:
+                    type: string
+      responses:
+        200:
+          description: Categoria atualizada
+          $ref: "#/components/responses/Sucesso"
+        404:
+          $ref: "#/components/responses/Erro"
+    delete:
+      tags:
+        - categorias
+      summary: Exclui categoria por id
+      responses:
+        200:
+          description: Categoria deletada
+          $ref: "#/components/responses/Sucesso"
+        404:
+          $ref: "#/components/responses/Erro"
+    patch:
+      tags:
+        - categorias
+      summary: Ativa categorias por id
+      requestBody:
+        content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                    - ATIVA
+      responses:
+        200:
+          description: Categoria ativada
+          $ref: "#/components/responses/Sucesso"
+        404:
+          $ref: "#/components/responses/Erro"
+  
+  /api/products:
+    get:
+      tags:
+        - produtos
+      parameters:
+        - in: query
+          name: filter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  CATEGORIA:
+                    type: string
+                  PREÇO UNITÁRIO:
+                    type: number
+                    minimum: 300.00
+                    maximum: 3000.00
+                  QUANTIDADE EM ESTOQUE:
+                    type: integer
+                    minimum: 1
+      summary: Recupera todas os produtos
+      description: "Através desse endpoint retornam-se os produtos existentes"
+      responses:
+        200:
+          description: Consulta realizada
+          content:
+            aplication/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Produtos'
+        204:
+          description: Nenhum produto encontrado.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+        404:
+           $ref: "#/components/responses/Erro"
+           
+  /api/admin/products:
+    post:
+      tags:
+        - produtos
+      summary: Adiciona novo produto
+      description: "Através desse endpoint criam-se novos produtos"
+      requestBody:
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produtos'
+      responses:
+        201:
+          description: Inserção realizada
+          $ref: "#/components/responses/Sucesso"
+        500:
+          description: Inserção não realizada
+          $ref: "#/components/responses/Erro_Tipo"
+  
+  /api/products/{id}:
+    parameters:
+      - $ref: "#/components/parameters/ID"
+    get:
+        tags:
+          - produtos
+        summary: Recupera produtos por id
+        description: "Através desse endpoint retornam-se os produtos existentes"
+        responses:
+          200:
+            description: Consulta realizada
+            $ref: "#/components/responses/Sucesso"
+          204:
+            description: Nenhum produto encontrado.
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items: {}
+          404:
+             $ref: "#/components/responses/Erro"
+    
+  /api/admin/products/{id}:
+    parameters:
+      - $ref: "#/components/parameters/ID"
+      
+    put:
+      tags:
+        - produtos
+      summary: Atulizada produto por id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ID_CATEGORIA:
+                  type: integer
+                NOME:
+                  type: string
+                DESCRIÇÃO:
+                  type: string
+                SLUG:
+                  type: string
+                PREÇO UNITÁRIO:
+                  type: number
+                QUANTIDADE EM ESTOQUE:
+                  type: integer
+                CATEGORIA:
+                  type: string
+      responses:
+        200:
+          description: Produto atualizado
+          $ref: "#/components/responses/Sucesso"
+        404:
+          $ref: "#/components/responses/Erro"
+    
+    delete:
+      tags:
+        - produtos
+      summary: Exclui produto por id
+      responses:
+        200:
+          description: Produto deletado
+          $ref: "#/components/responses/Sucesso"
+        404:
+          $ref: "#/components/responses/Erro"
+          
+  /api/users/{id}:
+    parameters:
+      - $ref: "#/components/parameters/ID"
+    get:
+        tags:
+          - usuários
+        summary: Recupera usuário por id
+        description: "Através desse endpoint retornam-se um usuário específico"
+        responses:
+          200:
+            description: Consulta realizada
+            $ref: "#/components/responses/Sucesso"
+          204:
+            description: Nenhum produto encontrado.
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items: {}
+          404:
+             $ref: "#/components/responses/Erro"
+
+  /api/admin/users:
+    get:
+      tags:
+        - usuários
+      summary: Recupera todas os usuários
+      description: "Através desse endpoint retornam-se os usuários cadastrados"
+      responses:
+        200:
+          description: Consulta realizada
+          content:
+            aplication/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Usuarios"
+        204:
+          description: Nenhum produto encontrado.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+        404:
+           $ref: "#/components/responses/Erro"
+
+    post:
+      tags:
+        - usuários
+      summary: Adiciona novo usuário
+      description: "Através desse endpoint criam-se novos usuários"
+      requestBody:
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usuarios'
+      responses:
+        201:
+          description: Inserção realizada
+          $ref: "#/components/responses/Sucesso"
+        500:
+          description: Inserção não realizada
+          $ref: "#/components/responses/Erro_Tipo"
+          
+  /api/admin/users/{id}:
+    parameters:
+      - $ref: "#/components/parameters/ID"
+        
+    put:
+      tags:
+        - usuários
+      summary: Atulizada usuário por id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nomeUsuario:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                senha:
+                  type: string
+                  format: password
+                cpf:
+                  type: string
+                telefone:
+                  type: string
+                endereco:
+                  $ref: '#/components/schemas/Endereco'
+              
+      responses:
+        200:
+          description: Usuário atualizado
+          $ref: "#/components/responses/Sucesso"
+        404:
+          $ref: "#/components/responses/Erro"
+    
+    delete:
+      tags:
+        - usuários
+      summary: Exclui usuário por id
+      responses:
+        200:
+          description: Usuário deletado
+          $ref: "#/components/responses/Sucesso"
+        404:
+          $ref: "#/components/responses/Erro"
+    
+  /api/orders:
+    post:
+      tags:
+        - pedidos
+      summary: Adiciona novo pedido
+      description: "Através desse endpoint criam-se novos pedidos"
+      requestBody:
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pedidos'
+      responses:
+        201:
+          description: Inserção realizada
+          $ref: "#/components/responses/Sucesso"
+        500:
+          description: Inserção não realizada
+          $ref: "#/components/responses/Erro_Tipo"
+          
+  /api/orders/{id}:
+    parameters:
+      - $ref: "#/components/parameters/ID"
+    get:
+      tags:
+        - pedidos
+      summary: Recupera pedido por id
+      description: "Através desse endpoint retorna-se um pedido específico"
+      responses:
+        200:
+          description: Consulta realizada
+          $ref: "#/components/responses/Sucesso"
+        204:
+          description: Nenhum pedido encontrado.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+        404:
+           $ref: "#/components/responses/Erro"
+  
+
+security:
+- auth: []
+              
+components:
+  parameters:
+    ID:
+      name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    
+  schemas:
+    
+    Categorias:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        status:
+          type: string
+    
+    Produtos:
+      type: object
+      properties:
+        id:
+          type: integer
+        ID_CATEGORIA:
+          type: integer
+        NOME:
+          type: string
+        DESCRIÇÃO:
+          type: string
+        SLUG:
+          type: string
+        PREÇO UNITÁRIO:
+          type: number
+        QUANTIDADE EM ESTOQUE:
+          type: integer
+        CATEGORIA:
+          type: string
+          
+    Usuarios:
+      type: object
+      properties:
+        id:
+          type: string
+        nomeUsuario:
+          type: string
+        email:
+          type: string
+          format: email
+        senha:
+          type: string
+          format: password
+        cpf:
+          type: string
+        telefone:
+          type: string
+        endereco:
+          $ref: '#/components/schemas/Endereco'
+          
+    Endereco:
+      type: object
+      properties:
+        rua:
+          type: string
+        numero:
+          type: string
+        complemento:
+          type: string
+          nullable: true
+        cep:
+          type: string
+        cidade:
+          type: string
+        estado:
+          type: string
+        pais:
+          type: string
+    
+    Pedidos:
+      type: object
+      properties:
+        id:
+          type: string
+        idCliente:
+          type: string
+        endereco:
+          $ref: '#/components/schemas/Endereco'
+        compras:
+          type: array
+          items:
+            $ref: '#/components/schemas/Compras'
+            
+    Compras:
+      type: object
+      properties:
+        idProduto:
+          type: string
+        quantidade:
+          type: integer
+          minimum: 1
+        desconto:
+          type: number
+          nullable: true
+        precoUnitario:
+          type: number
+  responses:
+    Sucesso:
+      description: Operação realizada
+      content:
+        aplication/json:
+          schema:
+            $ref: "#/components/schemas/Categorias"
+    Erro:
+      description: Página não encontrada
+      content:
+        aplication/json:
+          example: "Not found:("
+          
+    Erro_Tipo:
+      description: Erro presente nos dados informados
+      content:
+        aplication/json:
+          example: "Verifique se os tipos dos dados estão corretos!"
+    
+  securitySchemes:
+    auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

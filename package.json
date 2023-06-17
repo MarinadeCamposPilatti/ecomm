@@ -4,10 +4,22 @@
     "description": "",
     "main": "src/main.js",
     "scripts": {
-      "start": "node src/main.js",
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "node src/main.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "npx eslint ./src/cli",
+        "lint:fix": "npx eslint --fix ./src/cli",
+        "lint:mongo": "npx eslint ./mongo/scripts",
+        "lint:mongo:fix": "npx eslint --fix ./mongo/scripts"
     },
     "author": "",
-    "license": "MIT"
-  }
-
+    "license": "MIT",
+    "dependencies": {
+        "chalk": "^5.2.0",
+        "csvtojson": "^2.0.10"
+    },
+    "devDependencies": {
+        "eslint": "^8.43.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-plugin-import": "^2.27.5"
+    }
+}

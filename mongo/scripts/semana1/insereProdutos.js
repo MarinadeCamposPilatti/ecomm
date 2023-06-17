@@ -1,7 +1,7 @@
-const data = require('./dados/ecomm-produtos.json');
+const data = require('../../dados/ecomm-produtos.json');
 
-use("ecomm");
+use('ecomm');
 
-let insert = db.products.insertMany(data);
+const insert = db.products.insertMany(data);
 
 console.log(insert);

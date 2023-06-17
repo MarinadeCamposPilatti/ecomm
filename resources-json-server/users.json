@@ -1,0 +1,24 @@
+[
+    {
+        "id": "1",
+        "idCliente": "1",
+        "endereco": {
+          "rua": "augusto",
+          "numero": "99",
+          "complemento": "casa 10",
+          "cep": "91345240",
+          "cidade": "braga",
+          "estado": "cavado",
+          "pais": "portugal"
+        },
+        "compras": [
+          {
+            "idProduto": "1",
+            "quantidade": 1,
+            "desconto": 0,
+            "precoUnitario": 10
+          }
+        ]
+      }
+
+]

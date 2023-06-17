@@ -1,0 +1,48 @@
+[
+    {
+        "NOME": "Sofá 3 lugares",
+        "DESCRIÇÃO": "Sofá 3 Lugares Retrátil e Reclinável Cama Inbox Compact 1,80m Velusoft Cinza",
+        "SLUG": "sofa-3-lugares",
+        "PREÇO UNITÁRIO": 2500.00,
+        "QUANTIDADE EM ESTOQUE": 1,
+        "CATEGORIA": "MÓVEIS",
+        "ID_CATEGORIA": 1,
+        "id": 1
+      },
+      {
+        "NOME": "Cama queen size",
+        "DESCRIÇÃO": "Cama Queen Size Dener Oppa Design - Mel",
+        "SLUG": "cama-queen-size-dener",
+        "PREÇO UNITÁRIO": 3100.00,
+        "QUANTIDADE EM ESTOQUE": 2,
+        "CATEGORIA": "MÓVEIS",
+        "id": 2
+      },
+      {
+        "NOME": "Central multimidia",
+        "DESCRIÇÃO": "Kit Combo Central Multimídia 9 Polegadas Mp5 Automotivo Aparelho 2 Din Som Pra Carro Sistema Operacional Android 12 Bluetooth Usb Gps Integrado Conexão Wifi Função Speedplay que Simula Carplay e Android Auto Mais Aplicativos Como Spotify Waze Youtube WhatsApp, Tela Resistiva, Microfone Externo Função Multi Tela 2gb Ram e 32gb de Memória interna, Entradas para Encostos de Cabeça, Comando de Volante e Para Câmera Frontal ou Traseira + Moldura Painel Kia Sorento 2013 a 2014 Cor Preta + Câmera de ré",
+        "SLUG": "central-multimidia-automotiva",
+        "PREÇO UNITÁRIO": 711.18,
+        "QUANTIDADE EM ESTOQUE": 1,
+        "CATEGORIA": "AUTOMOTIVA",
+        "id": 3
+      },
+      {
+        "NOME": "Building Microservices",
+        "DESCRIÇÃO": "Building Microservices (English Edition) por Sam Newman",
+        "SLUG": "livro-building-microservices",
+        "PREÇO UNITÁRIO": 300.28,
+        "QUANTIDADE EM ESTOQUE": 2,
+        "CATEGORIA": "LIVROS",
+        "id": 4
+      },
+      {
+        "NOME": "Galaxy Tab S8",
+        "DESCRIÇÃO": "Tablet Samsung Galaxy S8 5G SM-X706B 256gb Grafite 8gb Ram",
+        "SLUG": "tablet-galaxy-tab-s8",
+        "PREÇO UNITÁRIO": 5939.1,
+        "QUANTIDADE EM ESTOQUE": 4,
+        "CATEGORIA": "INFORMÁTICA",
+        "id": 5
+      }
+]
