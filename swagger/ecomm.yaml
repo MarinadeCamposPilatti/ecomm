@@ -118,7 +118,7 @@ paths:
         - categorias
       summary: Exclui categoria por id
       responses:
-        200:
+        204:
           description: Categoria deletada
           $ref: "#/components/responses/Sucesso"
         404:
@@ -267,7 +267,7 @@ paths:
         - produtos
       summary: Exclui produto por id
       responses:
-        200:
+        204:
           description: Produto deletado
           $ref: "#/components/responses/Sucesso"
         404:
@@ -379,7 +379,7 @@ paths:
         - usuários
       summary: Exclui usuário por id
       responses:
-        200:
+        204:
           description: Usuário deletado
           $ref: "#/components/responses/Sucesso"
         404:
