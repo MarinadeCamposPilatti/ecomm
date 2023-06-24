@@ -2,8 +2,14 @@ FROM node:18
 
 WORKDIR /app-ecomm
 
-COPY . .
+COPY . /app-ecomm
 
-RUN npm install
+RUN npm init
 
-CMD npm start
+RUN npm install nodemon -g  
+
+COPY ./package.json /app-ecomm/package.json    
+
+EXPOSE 3030
+
+CMD ["npm", "start"]
