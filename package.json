@@ -1,25 +1,36 @@
 {
-    "name": "ecomm",
-    "version": "1.0.0",
-    "description": "",
-    "main": "src/main.js",
-    "scripts": {
-        "start": "node src/main.js",
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "npx eslint ./src/cli",
-        "lint:fix": "npx eslint --fix ./src/cli",
-        "lint:mongo": "npx eslint ./mongo/scripts",
-        "lint:mongo:fix": "npx eslint --fix ./mongo/scripts"
-    },
-    "author": "",
-    "license": "MIT",
-    "dependencies": {
-        "chalk": "^5.2.0",
-        "csvtojson": "^2.0.10"
-    },
-    "devDependencies": {
-        "eslint": "^8.43.0",
-        "eslint-config-airbnb-base": "^15.0.0",
-        "eslint-plugin-import": "^2.27.5"
-    }
+  "name": "ecomm",
+  "version": "1.0.0",
+  "description": "Projeto de Ecommerce criando durante o programa LevelUp da Alura em parceira com a Pagonxt, utilizando Docker e MongoDb.",
+  "main": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx nodemon server.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose",
+    "lint": "npx eslint ./src/cli",
+    "lint:fix": "npx eslint --fix ./src/cli",
+    "lint:mongo": "npx eslint ./mongo/scripts",
+    "lint:mongo:fix": "npx eslint --fix ./mongo/scripts"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@jest/globals": "^29.5.0",
+    "chalk": "^5.2.0",
+    "csvtojson": "^2.0.10",
+    "express": "^4.18.2",
+    "jest": "^29.5.0",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.3.1",
+    "swagger-ui-express": "^4.6.3",
+    "yaml": "^2.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.43.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "nodemon": "^2.0.22",
+    "supertest": "^6.3.3"
+  },
+  "keywords": []
 }
